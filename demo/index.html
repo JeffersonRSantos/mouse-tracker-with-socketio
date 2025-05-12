@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Page with iframe</title>
+    <style>
+        body { margin: 20px; font-family: Arial, sans-serif; }
+        .iframe-container { border: 1px solid #ccc; padding: 10px; margin: 20px 0; }
+        .edit-panel {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .edit__feature {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .edit__feature:hover {
+            background-color: #0056b3;
+        }
+        .element-container {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Demo Page</h1>
+    
+    <div class="edit-panel">
+        <h3>Elementos Editáveis:</h3>
+        <div class="element-container" data-fingerprint="1">
+            <p>Elemento 1</p>
+            <button class="edit__feature">Editar</button>
+        </div>
+        <div class="element-container" data-fingerprint="2">
+            <p>Elemento 2</p>
+            <button class="edit__feature">Editar</button>
+        </div>
+        <div class="element-container" data-fingerprint="3">
+            <p>Elemento 3</p>
+            <button class="edit__feature">Editar</button>
+        </div>
+    </div>
+
+    <div class="iframe-container">
+        <iframe id="editor-preview-iframe" src="iframe-content.html" width="100%" height="400px"></iframe>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iframe Content</title>
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .content-block {
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .content-block:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .content-block h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .content-block p {
+            margin: 0;
+            color: #666;
+            line-height: 1.5;
+        }
+        .user-marker {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Conteúdo do iframe</h2>
+    <div data-fusion-lazy-id="1" class="content-block">
+        <h3>Elemento 1</h3>
+        <p>Este é o conteúdo editável do primeiro elemento. Clique no botão 'Editar' acima para marcar este elemento.</p>
+    </div>
+    <div data-fusion-lazy-id="2" class="content-block">
+        <h3>Elemento 2</h3>
+        <p>Este é o conteúdo editável do segundo elemento. Clique no botão 'Editar' acima para marcar este elemento.</p>
+    </div>
+    <div data-fusion-lazy-id="3" class="content-block">
+        <h3>Elemento 3</h3>
+        <p>Este é o conteúdo editável do terceiro elemento. Clique no botão 'Editar' acima para marcar este elemento.</p>
+    </div>
+</body>
+</html>
