@@ -30,12 +30,7 @@ io.on('connection', (socket) => {
 
     socket.on('user-init', (data) => {
         userRoom = data.pathname;          
-        userData = {
-            userId: data.userId,
-            userName: data.userName,
-            color: data.color,
-            pathname: data.pathname
-        };
+        userData = {...data};
 
         // Join the room for this pathname
         socket.join(userRoom);
