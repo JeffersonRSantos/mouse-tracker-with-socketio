@@ -62,7 +62,7 @@ io.on('connection', (socket) => {
         if (userRoom) {
             //save data on object to user room
             const roomUsers = getRoomUsers(userRoom);
-            roomUsers.set(data.userId, {...userData, ...data, pathname: data.pathname, test: 123});
+            roomUsers.set(data.userId, {...userData, ...data, pathname: data.pathname});
             rooms.set(userRoom, roomUsers);
 
             socket.to(userRoom).emit('element-click', data);
