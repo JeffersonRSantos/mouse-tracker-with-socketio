@@ -29,13 +29,13 @@ io.on('connection', (socket) => {
     let userRoom = null;
 
     socket.on('user-init', (data) => {
+        userRoom = data.pathname;          
         userData = {
             userId: data.userId,
             userName: data.userName,
             color: data.color,
             pathname: data.pathname
         };
-        userRoom = data.pathname;
 
         // Join the room for this pathname
         socket.join(userRoom);
@@ -45,12 +45,16 @@ io.on('connection', (socket) => {
             rooms.set(userRoom, new Map());
         }
 
-        // Add user to the room
-        const roomUsers = getRoomUsers(userRoom);
-        roomUsers.set(userData.userId, userData);
+        // Add user to the room if no exists
+        const roomUsers = getRoomUsers(userRoom); 
+         if(roomUsers.has(userData.userId)){
+            userData = roomUsers.get(userData.userId);
+            console.log(`User ${userData.userName} exists in room ${userRoom}`);
+        }else{
+            roomUsers.set(userData.userId, userData);
+            console.log(`User ${userData.userName} joined room ${userRoom}`);
+        }
         rooms.set(userRoom, roomUsers);
-
-        console.log(`User ${userData.userName} joined room ${userRoom}`);
 
         // Broadcast to other users in the same room that a new user has joined
         socket.to(userRoom).emit('user-joined', userData);
@@ -59,14 +63,13 @@ io.on('connection', (socket) => {
         broadcastUserCount(userRoom);
     });
 
-    socket.on('cursor-move', (data) => {
-        if (userRoom) {
-            socket.to(userRoom).emit('cursor-move', data);
-        }
-    });
-
     socket.on('element-click', (data) => {
         if (userRoom) {
+            //save data on object to user room
+            const roomUsers = getRoomUsers(userRoom);
+            roomUsers.set(data.userId, {...userData, ...data, pathname: data.pathname, test: 123});
+            rooms.set(userRoom, roomUsers);
+
             socket.to(userRoom).emit('element-click', data);
         }
     });
